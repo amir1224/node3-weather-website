@@ -8,9 +8,11 @@ const forecast = (latitude, longitude, callback) => {
     } else if (body.error) {
       callback(body.error.info, undefined);
     } else {
+      console.log(body);
       const { current } = body;
-      const { weather_descriptions, feelslike, temperature } = current;
-      const msg = `The weather is ${weather_descriptions}.It is currently ${temperature} degrees out. It feels like ${feelslike} degrees out.`;
+      const { weather_descriptions, feelslike, temperature, wind_degree } =
+        current;
+      const msg = `The weather is ${weather_descriptions}.It is currently ${temperature} degrees out. It feels like ${feelslike} degrees out. The wind degree is ${wind_degree}`;
       callback(undefined, msg);
     }
   });
